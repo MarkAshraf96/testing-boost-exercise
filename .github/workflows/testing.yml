@@ -20,10 +20,10 @@ jobs:
       - name: "Create build directory"
         run: mkdir build
       - name: "run CMake"
-        working-directory: ./build
+        working-directory: /build
         run: cmake ..
       - name: "run Make"
-        working-directory: ./build
+        working-directory: /build
         run: make -j4
 
   Test:
@@ -34,11 +34,11 @@ jobs:
       - name: "Install dependencies"
         run: sudo apt-get install cmake libyaml-cpp-dev libeigen3-dev libboost-test-dev
       - name: "run CMake"
-        working-directory: ./build
+        working-directory: /build
         run: cmake ..
       - name: "run Make"
-        working-directory: ./build
+        working-directory: /build
         run: make -j4
       - name: "Run Test"
-        working-directory: ./build
+        working-directory: /build
         run: make test
