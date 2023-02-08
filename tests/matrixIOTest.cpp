@@ -1,12 +1,12 @@
 #define BOOST_TEST_DYN_LINK
-#include "matrixIO.hpp"
+#include <matrixIO.hpp>
 #include <Eigen/Dense>
 #include <boost/test/unit_test.hpp>
 
 using namespace Eigen;
 
 struct matrixIOFixture {
-  matrixIOFixture() {
+  matrixIOFixture(){
     expected = MatrixXd(3, 3);
     expected << 0.680375, 0.59688, -0.329554, -0.211234, 0.823295, 0.536459,
         0.566198, -0.604897, -0.444451;
@@ -17,7 +17,7 @@ struct matrixIOFixture {
 
 BOOST_FIXTURE_TEST_SUITE(matrixIOTests, matrixIOFixture)
 
-BOOST_AUTO_TEST_CASE(matrixIOTests) {
+BOOST_AUTO_TEST_CASE(matrixIOTests){
   MatrixXd outputMatrix = matrixIO::openData("../data/m3.csv", 3);
 
   BOOST_TEST(expected(0, 0) == outputMatrix(0, 0));
