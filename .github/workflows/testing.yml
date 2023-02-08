@@ -13,7 +13,7 @@ jobs:
         run: clang-format --dry-run -Werror src/*.hpp src/*.cpp tests/*.cpp
   Build:
     runs-on: ubuntu-latest
-      steps:
+    steps:
       - uses: actions/checkout@v2
       - name: "Install dependencies"
         run: sudo apt-get install cmake libyaml-cpp-dev libeigen3-dev libboost-test-dev
