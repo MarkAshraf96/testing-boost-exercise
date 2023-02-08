@@ -21,7 +21,7 @@ jobs:
         run: mkdir build
       - name: "run CMake"
         working-directory: ./build
-          run: cmake ..
+        run: cmake ..
       - name: "run Make"
         working-directory: ./build
         run: make -j4
