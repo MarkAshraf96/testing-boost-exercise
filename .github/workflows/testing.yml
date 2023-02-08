@@ -3,7 +3,7 @@ name: SSE CI/CD
 on: [push]
 
 jobs:
- Style:
+  Style:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -12,19 +12,19 @@ jobs:
       - name: "Run clang-format"
         run: clang-format --dry-run -Werror src/*.hpp src/*.cpp tests/*.cpp
   Build:
-   runs-on: ubuntu-latest
-   steps:
-    - uses: actions/checkout@v2
-    - name: "Install dependencies"
-      run: sudo apt-get install cmake libyaml-cpp-dev libeigen3-dev libboost-test-dev
-    - name: "Create build directory"
-       run: mkdir build
-    - name: "run CMake"
-      working-directory: ./build
-        run: cmake ..
-    - name: "run Make"
-      working-directory: ./build
-      run: make -j4
+    runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: "Install dependencies"
+        run: sudo apt-get install cmake libyaml-cpp-dev libeigen3-dev libboost-test-dev
+      - name: "Create build directory"
+        run: mkdir build
+      - name: "run CMake"
+        working-directory: ./build
+          run: cmake ..
+      - name: "run Make"
+        working-directory: ./build
+        run: make -j4
 
   Test:
     needs: Build
